@@ -2,7 +2,10 @@
 <suite parallel="false" name="Nopcommerce">
   <test name="Run on FIREFOX">
     <classes>
-      <class name="com.nopcommerce.users.User_01_Repeat_Yourself"/>
+<!--       <class name="com.nopcommerce.users.User_01_Repeat_Yourself"/> -->
+<!--       <class name="com.nopcommerce.users.Level_02_BasePage_Part_I"/> -->
+<!-- 		<class name="com.nopcommerce.users.Level_02_BasePage_Part_II"/> -->
+			<class name="com.nopcommerce.users.Level_02_BasePage_Part_III"/>	
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

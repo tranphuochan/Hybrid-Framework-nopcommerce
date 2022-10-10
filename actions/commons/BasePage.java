@@ -15,6 +15,16 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
+	public static BasePage basePage;	
+	
+	public static BasePage getBasePage() {
+		//Singleton Parttern
+		if (basePage == null){
+			basePage = new BasePage();
+		}
+		return new BasePage();
+	
+	}
 
 	public void openUrl(WebDriver driver, String pageUrl) {
 		driver.get(pageUrl);
@@ -119,7 +129,7 @@ public class BasePage {
 		getWebElement(driver, Locator).click();
 	}
 
-	public void sendkeyToElement(WebDriver driver, String Locator, String valueToSendkey) {
+	public void sendkeyBoardToElement(WebDriver driver, String Locator, String valueToSendkey) {
 		getWebElement(driver, Locator).clear();
 		getWebElement(driver, Locator).sendKeys(valueToSendkey);
 
@@ -393,4 +403,9 @@ public class BasePage {
 	public void waitForAlertPresence(WebDriver driver) {
 		new WebDriverWait(driver, 30).until(ExpectedConditions.alertIsPresent());
 	}
+	
+	public boolean waitForPageUrlToBe(WebDriver driver, String PageUrl) {
+		return new WebDriverWait(driver, 30).until(ExpectedConditions.urlToBe(PageUrl));
+	}
+		
 }	

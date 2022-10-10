@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -53,13 +54,14 @@ public class User_01_Repeat_Yourself {
 		new Select(driver.findElement(By.xpath("//select[@name='DateOfBirthYear']"))).selectByVisibleText("1989");
 		driver.findElement(By.cssSelector("input#Email")).sendKeys(emailAdd);
 		System.out.println(emailAdd);
-		driver.findElement(By.cssSelector("input#Password")).sendKeys("123456");
+		driver.findElement(By.xpath("//input[@id='Password']")).sendKeys("123456");
 		driver.findElement(By.cssSelector("input#ConfirmPassword")).sendKeys("123456");
 		driver.findElement(By.cssSelector("button#register-button")).click();
 		Assert.assertTrue(driver.findElement(By.xpath("//div[text()='Your registration completed']")).isDisplayed());
 		
 		driver.findElement(By.cssSelector("a.ico-logout")).click();
-		
+		explicitwait.until(ExpectedConditions.urlToBe("https://demo.nopcommerce.com/"));
+		Assert.assertEquals(driver.getCurrentUrl(), "https://demo.nopcommerce.com/");
 
 	}
 	@Test
